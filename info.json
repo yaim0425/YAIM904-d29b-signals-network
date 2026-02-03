@@ -1,0 +1,12 @@
+{
+  "name": "YAIM904-d29b-signals-network",
+  "version": "0.0.1",
+  "title": "YAIM904 d29b Signals network",
+  "author": "YAIM904",
+  "factorio_version": "2.0",
+  "description": "Allows sending of signals from anywhere to anywhere, even between planets. Unlimited distances. No surface restrictions. [[I accept suggestions]]",
+  "homepage": "https://github.com/yaim0425/YAIM904-d29b-signals-network",
+  "dependencies": [
+    "YAIM904-d00b-core"
+  ]
+}
