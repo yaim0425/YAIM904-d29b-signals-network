@@ -44,11 +44,6 @@ end
 function This_MOD.reference_values()
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    --- IDs de las entidades
-    This_MOD.id_sender = "A01A"
-    This_MOD.id_sender = This_MOD.id
-    -- This_MOD.id_receiver = ""
-
     --- Configuración de la superficie
     This_MOD.map_gen_settings = {
         width = 1,
@@ -107,48 +102,48 @@ function This_MOD.load_events()
         This_MOD.create_entity(This_MOD.create_data(event))
     end)
 
-    -- --- Abrir o cerrar la interfaz
-    -- script.on_event({
-    --     defines.events.on_gui_opened,
-    --     defines.events.on_gui_closed
-    -- }, function(event)
-    --     This_MOD.toggle_gui(This_MOD.create_data(event))
-    -- end)
+    --- Abrir o cerrar la interfaz
+    script.on_event({
+        defines.events.on_gui_opened,
+        defines.events.on_gui_closed
+    }, function(event)
+        This_MOD.toggle_gui(This_MOD.create_data(event))
+    end)
 
-    -- --- Al seleccionar otro canal
-    -- script.on_event({
-    --     defines.events.on_gui_selection_state_changed
-    -- }, function(event)
-    --     This_MOD.selection_channel(This_MOD.create_data(event))
-    -- end)
+    --- Al seleccionar otro canal
+    script.on_event({
+        defines.events.on_gui_selection_state_changed
+    }, function(event)
+        This_MOD.selection_channel(This_MOD.create_data(event))
+    end)
 
-    -- --- Al hacer clic en algún elemento de la ventana
-    -- script.on_event({
-    --     defines.events.on_gui_click
-    -- }, function(event)
-    --     This_MOD.button_action(This_MOD.create_data(event))
-    -- end)
+    --- Al hacer clic en algún elemento de la ventana
+    script.on_event({
+        defines.events.on_gui_click
+    }, function(event)
+        This_MOD.button_action(This_MOD.create_data(event))
+    end)
 
-    -- --- Al seleccionar o deseleccionar un icon
-    -- script.on_event({
-    --     defines.events.on_gui_elem_changed
-    -- }, function(event)
-    --     This_MOD.add_icon(This_MOD.create_data(event))
-    -- end)
+    --- Al seleccionar o deseleccionar un icon
+    script.on_event({
+        defines.events.on_gui_elem_changed
+    }, function(event)
+        This_MOD.add_icon(This_MOD.create_data(event))
+    end)
 
-    -- --- Validar el nuevo nombre al dar ENTER
-    -- script.on_event({
-    --     defines.events.on_gui_confirmed
-    -- }, function(event)
-    --     This_MOD.edit_channel_name(This_MOD.create_data(event))
-    -- end)
+    --- Validar el nuevo nombre al dar ENTER
+    script.on_event({
+        defines.events.on_gui_confirmed
+    }, function(event)
+        This_MOD.edit_channel_name(This_MOD.create_data(event))
+    end)
 
-    -- --- Al copiar las entidades
-    -- script.on_event({
-    --     defines.events.on_player_setup_blueprint
-    -- }, function(event)
-    --     This_MOD.create_blueprint(This_MOD.create_data(event))
-    -- end)
+    --- Al copiar las entidades
+    script.on_event({
+        defines.events.on_player_setup_blueprint
+    }, function(event)
+        This_MOD.create_blueprint(This_MOD.create_data(event))
+    end)
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -160,20 +155,20 @@ function This_MOD.load_events()
     --- Muerte y reconstrucción de una entidad
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    -- --- Muerte de la entidad
-    -- script.on_event({
-    --     defines.events.on_entity_died
-    -- }, function(event)
-    --     This_MOD.before_entity_died(This_MOD.create_data(event))
-    -- end)
+    --- Muerte de la entidad
+    script.on_event({
+        defines.events.on_entity_died
+    }, function(event)
+        This_MOD.before_entity_died(This_MOD.create_data(event))
+    end)
 
-    -- --- Modificar el fantasma de reconstrucción
-    -- script.on_event({
-    --     defines.events.on_post_entity_died
-    -- }, function(event)
-    --     event.entity = event.ghost
-    --     This_MOD.after_entity_died(This_MOD.create_data(event))
-    -- end)
+    --- Modificar el fantasma de reconstrucción
+    script.on_event({
+        defines.events.on_post_entity_died
+    }, function(event)
+        event.entity = event.ghost
+        This_MOD.after_entity_died(This_MOD.create_data(event))
+    end)
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -185,13 +180,13 @@ function This_MOD.load_events()
     --- Acciones por tiempo
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    -- script.on_nth_tick(20, function()
-    --     --- La entidad tenga energía
-    --     This_MOD.check_power()
+    script.on_nth_tick(20, function()
+        --- La entidad tenga energía
+        This_MOD.check_power()
 
-    --     --- Forzar el cierre, en caso de ser necesario
-    --     This_MOD.validate_gui()
-    -- end)
+        --- Forzar el cierre, en caso de ser necesario
+        This_MOD.validate_gui()
+    end)
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -203,36 +198,36 @@ function This_MOD.load_events()
     --- Acciones propias del MOD
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    -- --- Copar la configuración de una antena en otra
-    -- script.on_event({
-    --     defines.events.on_entity_settings_pasted
-    -- }, function(event)
-    --     This_MOD.copy_paste_settings(This_MOD.create_data(event))
-    -- end)
+    --- Copar la configuración de una antena en otra
+    script.on_event({
+        defines.events.on_entity_settings_pasted
+    }, function(event)
+        This_MOD.copy_paste_settings(This_MOD.create_data(event))
+    end)
 
-    -- --- Ocultar la superficie de las fuerzas recién creadas
-    -- script.on_event({
-    --     defines.events.on_force_created
-    -- }, function(event)
-    --     This_MOD.hide_surface(This_MOD.create_data(event))
-    -- end)
+    --- Ocultar la superficie de las fuerzas recién creadas
+    script.on_event({
+        defines.events.on_force_created
+    }, function(event)
+        This_MOD.hide_surface(This_MOD.create_data(event))
+    end)
 
-    -- --- Combinar dos forces
-    -- script.on_event({
-    --     defines.events.on_forces_merged
-    -- }, function(event)
-    --     This_MOD.forces_merged(This_MOD.create_data(event))
-    -- end)
+    --- Combinar dos forces
+    script.on_event({
+        defines.events.on_forces_merged
+    }, function(event)
+        This_MOD.forces_merged(This_MOD.create_data(event))
+    end)
 
-    -- --- Al clonar una antena
-    -- script.on_event({
-    --     defines.events.on_entity_cloned
-    -- }, function(event)
-    --     local Event = GMOD.copy(event)
-    --     Event.entity = event.destination
-    --     This_MOD.create_entity(This_MOD.create_data(Event))
-    --     This_MOD.copy_paste_settings(This_MOD.create_data(event))
-    -- end)
+    --- Al clonar una antena
+    script.on_event({
+        defines.events.on_entity_cloned
+    }, function(event)
+        local Event = GMOD.copy(event)
+        Event.entity = event.destination
+        This_MOD.create_entity(This_MOD.create_data(Event))
+        This_MOD.copy_paste_settings(This_MOD.create_data(event))
+    end)
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
@@ -293,61 +288,8 @@ function This_MOD.create_entity(Data)
     --- Configurar la entidad
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    --- Emisor
-    if GMOD.has_id(Data.Entity.name, This_MOD.id_sender) then
-        --- Superficie de los canales
-        local Surface = This_MOD.get_surface()
-
-        --- Crear los filtros
-        Node.filter_red = Surface.create_entity({
-            name = This_MOD.combinator_name,
-            force = Data.Force.name,
-            position = { 0, 0 }
-        })
-
-        Node.filter_green = Surface.create_entity({
-            name = This_MOD.combinator_name,
-            force = Data.Force.name,
-            position = { 0, 0 }
-        })
-
-        --- Configurar los filtros
-        Node.filter_red.get_or_create_control_behavior().parameters = {
-            output_signal = { type = "virtual", name = "signal-everything" },
-            first_signal = { type = "virtual", name = "signal-anything" },
-            comparator = "≠"
-        }
-
-        Node.filter_green.get_or_create_control_behavior().parameters = {
-            output_signal = { type = "virtual", name = "signal-everything" },
-            first_signal = { type = "virtual", name = "signal-anything" },
-            comparator = "≠"
-        }
-
-        --- Puntos de conexión de los filtros
-        local Filter_red = Node.filter_red.get_wire_connector(defines.wire_connector_id.combinator_input_red, true)
-        local Filter_green = Node.filter_green.get_wire_connector(defines.wire_connector_id.combinator_input_green, true)
-
-        --- Puntos de conexión del emisor
-        local Sender_red = Data.Entity.get_wire_connector(defines.wire_connector_id.circuit_red, true)
-        local Sender_green = Data.Entity.get_wire_connector(defines.wire_connector_id.circuit_green, true)
-
-        --- Conectar el emisor a los filtros
-        Sender_red.connect_to(Filter_red, false, defines.wire_origin.script)
-        Sender_green.connect_to(Filter_green, false, defines.wire_origin.script)
-
-        --- Guardar el puntos de conexión
-        Node.red = Node.filter_red.get_wire_connector(defines.wire_connector_id.combinator_output_red, true)
-        Node.green = Node.filter_green.get_wire_connector(defines.wire_connector_id.combinator_output_green, true)
-        Node.type = This_MOD.id_sender
-    end
-
-    --- Receptor
-    if GMOD.has_id(Data.Entity.name, This_MOD.id_receiver) then
-        Node.red = Data.Entity.get_wire_connector(defines.wire_connector_id.circuit_red, true)
-        Node.green = Data.Entity.get_wire_connector(defines.wire_connector_id.circuit_green, true)
-        Node.type = This_MOD.id_receiver
-    end
+    Node.red = Data.Entity.get_wire_connector(defines.wire_connector_id.circuit_red, true)
+    Node.green = Data.Entity.get_wire_connector(defines.wire_connector_id.circuit_green, true)
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
@@ -392,23 +334,13 @@ function This_MOD.toggle_gui(Data)
 
         if Data.Entity.name == "entity-ghost" then
             local Entity = Data.Entity.ghost_prototype
-            if
-                GMOD.has_id(Entity.name, This_MOD.id_sender) or
-                GMOD.has_id(Entity.name, This_MOD.id_receiver)
-            then
+            if GMOD.has_id(Entity.name, This_MOD.id) then
                 This_MOD.sound_bad(Data)
                 Data.Player.opened = nil
             end
         end
 
-        if
-            not (
-                GMOD.has_id(Data.Entity.name, This_MOD.id_sender) or
-                GMOD.has_id(Data.Entity.name, This_MOD.id_receiver)
-            )
-        then
-            return false
-        end
+        if not GMOD.has_id(Data.Entity.name, This_MOD.id) then return false end
 
         --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -1051,10 +983,7 @@ function This_MOD.create_blueprint(Data)
 
     local Mapping = Data.Event.mapping.get()
     for _, entity in pairs(Entities or {}) do
-        if
-            GMOD.has_id(entity.name, This_MOD.id_sender) or
-            GMOD.has_id(entity.name, This_MOD.id_receiver)
-        then
+        if GMOD.has_id(entity.name, This_MOD.id) then
             local Entity = Mapping[entity.entity_number]
             local Node = GMOD.get_tables(Data.Nodes, "entity", Entity)[1]
             local Tags = { channel = Node.channel.name }
@@ -1072,12 +1001,7 @@ function This_MOD.before_entity_died(Data)
     --- Validación
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    if
-        not (
-            GMOD.has_id(Data.Entity.name, This_MOD.id_sender) or
-            GMOD.has_id(Data.Entity.name, This_MOD.id_receiver)
-        )
-    then
+    if not GMOD.has_id(Data.Entity.name, This_MOD.id) then
         return
     end
 
@@ -1127,14 +1051,7 @@ function This_MOD.after_entity_died(Data)
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     if #Data.Ghosts == 0 then return end
-    if
-        not (
-            GMOD.has_id(Prototype.name, This_MOD.id_sender) or
-            GMOD.has_id(Prototype.name, This_MOD.id_receiver)
-        )
-    then
-        return
-    end
+    if not GMOD.has_id(Prototype.name, This_MOD.id) then return end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -1239,11 +1156,6 @@ function This_MOD.check_power()
         for _, key in pairs(Deleted) do
             local Node = gForce.nodes[key]
             table.remove(gForce.nodes, key)
-
-            if Node.type == This_MOD.id_sender then
-                Node.filter_red.destroy()
-                Node.filter_green.destroy()
-            end
         end
     end
 
@@ -1288,23 +1200,8 @@ function This_MOD.copy_paste_settings(Data)
     if Source.name == "entity-ghost" then return end
     if Destination.name == "entity-ghost" then return end
 
-    if
-        not (
-            GMOD.has_id(Source.name, This_MOD.id_sender) or
-            GMOD.has_id(Source.name, This_MOD.id_receiver)
-        )
-    then
-        return
-    end
-
-    if
-        not (
-            GMOD.has_id(Destination.name, This_MOD.id_sender) or
-            GMOD.has_id(Destination.name, This_MOD.id_receiver)
-        )
-    then
-        return
-    end
+    if not GMOD.has_id(Source.name, This_MOD.id) then return end
+    if not GMOD.has_id(Destination.name, This_MOD.id) then return end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -1683,6 +1580,6 @@ end
 ---[ Iniciar el MOD ]---
 ---------------------------------------------------------------------------------------------------
 
--- This_MOD.start()
+This_MOD.start()
 
 ---------------------------------------------------------------------------------------------------

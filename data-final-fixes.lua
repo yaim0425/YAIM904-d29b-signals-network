@@ -307,6 +307,7 @@ function This_MOD.create_entity(space)
         material_slots_count = 0,
         charge_approach_distance = 0,
 
+        drawing_box_vertical_extension = 1,
         draw_logistic_radius_visualization = false,
         draw_construction_radius_visualization = false,
 
