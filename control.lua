@@ -1187,41 +1187,31 @@ function This_MOD.validate_gui()
 
     --- Validar cada GUI
     while Data.gMOD.check_GUI <= Last do
-        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-
         --- Validar el índice del jugador
         local Player_index = Data.Players_index[Data.gMOD.check_GUI]
         if Player_index then
             Data.gMOD.check_GUI = Data.gMOD.check_GUI + 1
         else
             Data.gMOD.check_GUI = 1
-            return
+            break
         end
 
         --- Cargar la información del jugador
         local gPlayer = Data.gPlayers[Player_index]
 
-        --- Cerrar el GUI si la entidad ya no es válida
+        --- Validar que el jugador tenga un GUI abierta
         if gPlayer.GUI.frame_main and gPlayer.GUI.frame_main.valid then
-            This_MOD.validate_entity(
-                This_MOD.create_data({
-                    entity = gPlayer.GUI.entity,
-                    player_index = Player_index
-                })
-            )
-        end
+            --- Agrupar la información a usar
+            local pData = This_MOD.create_data({
+                entity = gPlayer.GUI.entity,
+                player_index = Player_index
+            })
 
-        --- Cerrar el GUI si el jugador está lejos de la entidad
-        if gPlayer.GUI.frame_main and gPlayer.GUI.frame_main.valid then
-            This_MOD.validate_distance(
-                This_MOD.create_data({
-                    entity = gPlayer.GUI.entity,
-                    player_index = Player_index
-                })
-            )
+            --- Cerrar el GUI de ser necesario
+            if This_MOD.validate_entity(pData) then
+                This_MOD.validate_distance(pData)
+            end
         end
-
-        --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
