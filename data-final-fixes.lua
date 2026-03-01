@@ -341,6 +341,128 @@ function This_MOD.create_entity(space)
 
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    --- Cambiar los conectores para que se vean bien
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    --- Variables a usar
+    local Graphics = "__base__/graphics/entity/circuit-connector/ccm-universal-"
+    local X = 1.1
+    local Y = 0.5
+
+    --- Cambiar los valores
+    Sender.circuit_connector = {
+        sprites = {
+            connector_main = {
+                filename = Graphics .. '04a-base-sequence.png',
+                priority = 'low',
+                width = 52,
+                height = 50,
+                scale = 0.5,
+                x = 104,
+                y = 150,
+                shift = { 0.09375 + X, 0.203125 + Y }
+            },
+            connector_shadow = {
+                filename = Graphics .. '04b-base-shadow-sequence.png',
+                priority = 'low',
+                draw_as_shadow = true,
+                width = 60,
+                height = 46,
+                scale = 0.5,
+                x = 120,
+                y = 138,
+                shift = { 0.3125 + X, 0.3125 + Y }
+            },
+            wire_pins = {
+                filename = Graphics .. '04c-wire-sequence.png',
+                priority = 'low',
+                width = 62,
+                height = 58,
+                scale = 0.5,
+                x = 124,
+                y = 174,
+                shift = { 0.09375 + X, 0.203125 + Y }
+            },
+            wire_pins_shadow = {
+                filename = Graphics .. '04d-wire-shadow-sequence.png',
+                priority = 'low',
+                draw_as_shadow = true,
+                width = 68,
+                height = 54,
+                scale = 0.5,
+                x = 136,
+                y = 162,
+                shift = { 0.390625 + X, 0.34375 + Y }
+            },
+            led_blue = {
+                filename = Graphics .. '04e-blue-LED-on-sequence.png',
+                priority = 'low',
+                draw_as_glow = true,
+                width = 60,
+                height = 60,
+                scale = 0.5,
+                x = 120,
+                y = 180,
+                shift = { 0.09375 + X, 0.171875 + Y }
+            },
+            led_blue_off = {
+                filename = Graphics .. '04f-blue-LED-off-sequence.png',
+                priority = 'low',
+                width = 46,
+                height = 44,
+                scale = 0.5,
+                x = 92,
+                y = 132,
+                shift = { 0.09375 + X, 0.171875 + Y }
+            },
+            led_green = {
+                filename = Graphics .. '04h-green-LED-sequence.png',
+                priority = 'low',
+                draw_as_glow = true,
+                width = 48,
+                height = 46,
+                scale = 0.5,
+                x = 96,
+                y = 138,
+                shift = { 0.09375 + X, 0.171875 + Y }
+            },
+            led_red = {
+                filename = Graphics .. '04i-red-LED-sequence.png',
+                priority = 'low',
+                draw_as_glow = true,
+                width = 48,
+                height = 46,
+                scale = 0.5,
+                x = 96,
+                y = 138,
+                shift = { 0.09375 + X, 0.171875 + Y }
+            },
+            led_light = {
+                intensity = 0,
+                size = 0.9
+            },
+            blue_led_light_offset = { 0.09375 + X, 0.453125 + Y },
+            red_green_led_light_offset = { 0.09375 + X, 0.359375 + Y }
+        },
+        points = {
+            wire = {
+                red = { 0.34375 + X, 0.203125 + Y },
+                green = { 0.40625 + X, 0.421875 + Y }
+            },
+            shadow = {
+                red = { 0.859375 + X, 0.546875 + Y },
+                green = { 0.671875 + X, 0.546875 + Y }
+            }
+        }
+    }
+
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+
+
+
+
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     --- Crear el prototipo
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
