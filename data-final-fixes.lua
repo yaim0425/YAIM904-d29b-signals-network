@@ -216,7 +216,7 @@ function This_MOD.create_entity(space)
 
         max_health = 400,
 
-        energy_usage = "10MW",
+        energy_usage = This_MOD.setting.energy .. "MW",
         recharge_minimum = "5MJ",
         charging_energy = "5MW",
 
