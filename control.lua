@@ -1120,7 +1120,7 @@ function This_MOD.check_power()
 
         --- Variables a usar
         local Energy = Node.entity.energy
-        local Buffer = Node.entity.electric_buffer_size
+        local Buffer = Node.entity.electric_buffer_size or 1
         local Power_satisfied = Energy >= Buffer * Threshold
 
         --- Acciones
