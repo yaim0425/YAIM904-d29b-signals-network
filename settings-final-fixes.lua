@@ -44,7 +44,7 @@ table.insert(This_MOD.setting, {
     type = "string",
     name = "energy",
     localised_name = { "description.energy-consumption" },
-    default_value = "10",
+    default_value = "50",
     allowed_values = {
         "0",
         "5",
