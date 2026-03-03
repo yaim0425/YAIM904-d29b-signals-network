@@ -2,7 +2,9 @@
 Version: 0.0.3
 Date: 2026-03-31
   Info:
-    - 
+    - Default power change from 10 to 50
+    - Power is configurable
+    - The antenna can operate without power
 ---------------------------------------------------------------------------------------------------
 Version: 0.0.2
 Date: 2026-02-28
