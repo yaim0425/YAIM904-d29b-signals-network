@@ -1120,7 +1120,7 @@ function This_MOD.check_power()
 
         --- Variables a usar
         local Energy = Node.entity.energy
-        local Buffer = Node.entity.electric_buffer_size
+        local Buffer = Node.entity.electric_buffer_size or 1
         local Power_satisfied = Energy >= Buffer * Threshold
 
         --- Acciones
@@ -1649,9 +1649,13 @@ function This_MOD.validate_distance(Data)
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     if Distance > Distance_max then
-        Data.GUI.action = This_MOD.action.close_force
-        This_MOD.toggle_gui(Data)
+        if Data.GUI.frame_main then
+            Data.GUI.action = This_MOD.action.close_force
+            This_MOD.toggle_gui(Data)
+        end
+        return false
     end
+    return true
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
