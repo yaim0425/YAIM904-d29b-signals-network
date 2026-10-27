@@ -530,7 +530,7 @@ function This_MOD.create_tech(space)
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     --- Tecnología base
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-GMOD.var_dump(data.raw.technology)
+
     local Tech = {
         type = "technology",
         name = This_MOD.name_tech,
