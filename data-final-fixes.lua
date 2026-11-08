@@ -545,7 +545,8 @@ function This_MOD.create_tech(space)
         } },
         icons = { {
             icon = This_MOD.path_graphics .. "tech.png",
-            icon_size = 256
+            icon_size = 128,
+            scale = 2
         } },
         order = "e-g",
         prerequisites = {
