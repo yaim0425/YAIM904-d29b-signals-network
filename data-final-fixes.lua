@@ -28,7 +28,7 @@ function This_MOD.start()
     --- Modificar los elementos
     for _, spaces in pairs(This_MOD.to_be_processed) do
         for _, space in pairs(spaces) do
-            --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+            --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
             --- Crear los elementos
             This_MOD.create_item(space)
@@ -36,7 +36,7 @@ function This_MOD.start()
             This_MOD.create_recipe(space)
             This_MOD.create_tech(space)
 
-            --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+            --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
         end
     end
 
@@ -44,9 +44,6 @@ function This_MOD.start()
     This_MOD.load_styles()
     This_MOD.load_icon()
     This_MOD.load_sound()
-
-    --- Fijar las posiciones actual
-    GMOD.d00b.change_orders()
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
@@ -113,7 +110,7 @@ function This_MOD.get_elements()
     --- Validación
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    if GMOD.entities[This_MOD.name_sender] then return end
+    if GMOD.entity[This_MOD.name_sender] then return end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -126,13 +123,20 @@ function This_MOD.get_elements()
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     local Space = {}
-    Space.combinator = GMOD.entities["decider-combinator"]
+    Space.combinator = GMOD.entity["decider-combinator"]
+    Space.combinator = GMOD.copy_with_format(Space.combinator)
+
     Space.item = GMOD.get_item_create(Space.combinator, "place_result")
-    Space.entity = GMOD.entities["radar"]
+    Space.entity = GMOD.entity["radar"]
 
     Space.recipe = GMOD.recipes[Space.item.name]
     Space.tech = GMOD.get_technology(Space.recipe)
+
     Space.recipe = Space.recipe and Space.recipe[1] or nil
+
+    for key, value in pairs(Space) do
+        Space[key] = GMOD.copy_with_format(value)
+    end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -497,8 +501,8 @@ function This_MOD.create_recipe(space)
     Sender.name = This_MOD.name_sender
     Sender.energy_required = 10
     Sender.enabled = false
-    Sender.subgroup = GMOD.items[This_MOD.name_sender].subgroup
-    Sender.order = GMOD.items[This_MOD.name_sender].order
+    Sender.subgroup = GMOD.item[This_MOD.name_sender].subgroup
+    Sender.order = GMOD.item[This_MOD.name_sender].order
     Sender.ingredients = {
         { type = "item", name = "processing-unit",      amount = 20 },
         { type = "item", name = "battery",              amount = 20 },
@@ -541,8 +545,7 @@ function This_MOD.create_tech(space)
         } },
         icons = { {
             icon = This_MOD.path_graphics .. "tech.png",
-            icon_size = 128,
-            scale = 2
+            icon_size = 256
         } },
         order = "e-g",
         prerequisites = {
